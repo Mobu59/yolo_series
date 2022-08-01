@@ -1,0 +1,6 @@
+train: "/world/data-gpu-94/liyang/pedDetection/head_detection/train.v2.json"
+val: "/world/data-gpu-94/liyang/pedDetection/head_detection/val.v2.json"
+#train: "/world/data-gpu-94/liyang/Github_projects/YOLOU/data/images/train"
+#val: "/world/data-gpu-94/liyang/Github_projects/YOLOU/data/images/val"
+nc: 1
+names : ['0', ] 
