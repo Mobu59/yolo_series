@@ -1,10 +1,8 @@
 
 
-# YOLOU：United, Study and easier to Deploy
+# yolo_series：Integration of yolo target detection
 
-​	The purpose of our creation of YOLOU is to better learn the algorithms of the YOLO series and pay tribute to our predecessors.
-
-​	Here "U" means United, mainly to gather more algorithms about the YOLO series through this project, so that friends can better learn the knowledge of object detection. At the same time, in order to better apply AI technology, YOLOU will also join The corresponding Deploy technology will accelerate the implementation of the algorithms we have learned and realize the value.
+​	The purpose of our creation of yolo_series is to better learn the algorithms of the YOLO series, better train and deploy models.
 
 ![YOLOU](./images/YOLOU.png)
 
@@ -45,22 +43,21 @@ At present, the YOLO series algorithms mainly included in YOLOU are:
 | X-Lite-c   |     512      | Training… | Training… |     6.25      |  5.92  |                              |                               |
 | X-Lite-g   |     640      |   58.3    |   40.7    |     7.30      | 12.91  |         2.15/465.19          |          1.01/990.69          |
 
-You can download all pretrained weights of YOLOU  with [Baidu Drive (YOLO)](https://pan.baidu.com/s/1Ws4Aieyt7gne9nrCK7VHJA)
+You can download all pretrained weights of yolo_series  with [Baidu Drive (YOLO)](https://pan.baidu.com/s/1Ws4Aieyt7gne9nrCK7VHJA)
 
 ## How to use
 
 ### Install
 
 ```bash
-git clone https://github.com/jizhishutong/YOLOU
-cd YOLOU
+git clone https://github.com/Mobu59/yolo_series.git
+cd yolo_series
 pip install -r requirements.txt
 ```
 
 ### Training
 
 ```bash
-<!--python train.py --mode yolov6 --data coco.yaml --cfg yolov6.yaml --weights yolov6.pt --batch-size 32-->
 python train.py --mode yolo --data data/head_det.yaml --cfg models/yolov5-lite/v5Lite-c.yaml --weights weights/yolov5-lite/v5lite-c.pt --batch-size 32
 
 ```
@@ -107,7 +104,8 @@ For data in json format
         ├── 100001.txt
         ├── 100002.txt
         └── 100003.txt
-data/0002902.jpg [{"ymax": 658.9170170117557, "xmax": 709.5, "xmin": 460.3, "ymin": 282.4999999999999, "name": 0}, {"ymax": 736, "xmax": 1020.4, "xmin": 728.2, "ymin": 368.6, "name": 0}] #xx.json example       
+#xx.json example        
+data/0002902.jpg [{"ymax": 658.9170170117557, "xmax": 709.5, "xmin": 460.3, "ymin": 282.4999999999999, "name": 0}, {"ymax": 736, "xmax": 1020.4, "xmin": 728.2, "ymin": 368.6, "name": 0}]        
 ```
 
 ### Export ONNX
@@ -150,14 +148,5 @@ https://github.com/cmdbug/YOLOv5_NCNN
 
 https://github.com/OAID/Tengine
 
-## Citing YOLOU
+https://github.com/jizhishutong/YOLOU
 
-If you use YOLOU in your research, please cite our work and give a star ⭐:
-
-```
- @misc{yolou2022,
-  title = { YOLOU：United, Study and easier to Deploy},
-  author = {ChaucerG},
-  year={2022}
-}
-```
