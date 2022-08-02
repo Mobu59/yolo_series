@@ -58,8 +58,12 @@ pip install -r requirements.txt
 ### Training
 
 ```bash
+Single GPU
 python train.py --mode yolo --data data/head_det.yaml --cfg models/yolov5-lite/v5Lite-c.yaml --weights weights/yolov5-lite/v5lite-c.pt --batch-size 32
-
+Multi GPUs(DDP mode recommended)
+python -m torch.distributed.launch --nproc_per_node 4 train.py --mode yolox --data data/head_det.yaml --cfg models/yolox/yoloxs.yaml --weights weights/yolox/yolox-s.pt --batch-size 32
+python -m torch.distributed.launch --nproc_per_node 4 train.py --mode yolov6 --data data/head_det.yaml --cfg models/yolov6/yolov6s.y
+aml --weights "" --batch-size 16
 ```
 
 ### Detect
