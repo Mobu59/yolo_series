@@ -57,15 +57,20 @@ pip install -r requirements.txt
 
 ### Training
 
-```bash
 Single GPU
+```bash
+# train yolov5-lite
 python train.py --mode yolo --data data/head_det.yaml --cfg models/yolov5-lite/v5Lite-c.yaml --weights weights/yolov5-lite/v5lite-c.pt --batch-size 32
+```
 Multi GPUs(DDP mode recommended)
+```bash
 # train yolox
 python -m torch.distributed.launch --nproc_per_node 4 train.py --mode yolox --data data/head_det.yaml --cfg models/yolox/yoloxs.yaml --weights weights/yolox/yolox-s.pt --batch-size 32
 # train yolov6
 python -m torch.distributed.launch --nproc_per_node 4 train.py --mode yolov6 --data data/head_det.yaml --cfg models/yolov6/yolov6s.yaml --weights "" --batch-size 16
 ```
+Note: For yolox models deployed on mobile_platform like yolox_tiny, yolox_nano etc, you should set "self.mobile_platform == True"(common.py line720)
+
 
 ### Detect
 
@@ -116,8 +121,11 @@ data/0002902.jpg [{"ymax": 658.9170170117557, "xmax": 709.5, "xmin": 460.3, "ymi
 ### Export ONNX
 
 ```bash
-python export.py --weights ./weights/yolov6/yolov6s.pt --include onnx
+python export.py --weights ./weights/yolov6/yolov6s.pt --data data/coco.yaml --include onnx
 ```
+Note: 
+- when export yolox.pt model to onnx, you should set "self.decode_in_inference == True"(yolox.py line36), and if your model will be deployed on mobile platform, you should set "mobile_platform == True"(yolox.py line168).Finally, you should also pay attention to "self.hw"(yolox.py line169), and you should modify it according to your input imgsz.  
+- when export yolov6.pt model to onnx, if your model will be deployed on mobile platform, you should set "mobile_platform == True"(yolov6.py line123).
 
 ## Reference
 
